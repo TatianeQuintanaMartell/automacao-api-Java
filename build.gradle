@@ -1,0 +1,45 @@
+plugins {
+    id 'io.qameta.allure' version '2.5'
+    id 'java'
+}
+
+tasks.withType(JavaCompile){
+    options.encoding("UTF-8")
+}
+group 'br.com.dbserver'
+version '1.0-SNAPSHOT'
+
+allure {
+    autoconfigure = true
+    version = '2.13.3'
+    useJUnit5 {
+        version = '2.13.3'
+    }
+}
+sourceCompatibility = 1.8
+
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.3.1'
+    implementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.6.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.6.2'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.6.2'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-launcher', version: '1.6.2'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-suite-api', version: '1.6.2'
+    implementation group: 'org.json', name: 'json', version: '20200518'
+    implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '4.3.0'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.11.0'
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
